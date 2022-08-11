@@ -1,64 +1,84 @@
 let screenInput=document.getElementById("screen");
-buttons=document.querySelectorAll('button');
+var screenvalue=screenInput.value;
 
-let screenValue='';
-// var flagdt=0;
-// function dot()
-// {
-//         flagdt++;
-//     //    console.log(screenValue[i]);
-//         if(flagdt==1)
-//         {
-//             screenValue+=".";
-//         } 
-//         else
-//         {
-//             return;
-//         }  
-
-
-// }
-
-
-for(item of buttons)
+function numbers(args)
 {
-  item.addEventListener('click' ,(e)=>{
+    // alert();
+    num=args.id;
+    document.getElementById("screen").value+=num;
+    flagOp=0;
 
-    buttonText=e.target.innerText;
-   
-    if(buttonText=='X')
-    {
-        buttonText='*';
-        screenValue+=buttonText;
-        screenInput.value= screenValue;
+}
+function screenClear()
+{
+    
+   document.getElementById("screen").value="";
 
-    }
-    else if(buttonText=='C')
-    {
-        screenValue=" ";
-        screenInput.value= screenValue;
-        // screenInput.value=" ";
-    }
+}
+function calculate()
+{
  
-    else if(buttonText=='=')
+    try
     {
-        screenInput.value=eval(screenValue);
-        screenValue=screenInput.value;
-       
-
+        let calculation=eval(screenInput.value);
+        screenInput.value=calculation;
     }
-  
-    else 
+    catch(e)
     {
-        screenValue+=buttonText;
-        screenInput.value= screenValue;
+        screenInput.value="error";
     }
-   
 
+}
 
+let flagDec=0;
+let flagOp=0;
+function operators(op)
+{
+    // alert();
+    screenvalue=screenInput.value;
 
-
-
-} )
-
+    if(op=="+"||op=="-"||op=="*"||op=="/")
+    {
+        flagOp++;
+      if(flagOp==1 && screenvalue.trim()!="")
+      {
+        if(op=="*")
+        {
+            document.getElementById("screen").value+="*";
+      
+            // screenvalue+="+";
+        }
+        if(op=="-")
+        {
+            document.getElementById("screen").value+="-";
+        }
+        if(op=="+")
+        {
+            document.getElementById("screen").value+="+";
+        }
+        if(op=="/")
+        {
+            document.getElementById("screen").value+="/";
+        }
+        flagDec=0;
+      }
+     
+    }
+    else
+    {
+        flagOp=0;
+    }
+    
+}
+function dot()
+{
+    flagDec++;
+    if(flagDec==1)
+    {
+        document.getElementById("screen").value+=".";
+    }
+    else
+    {
+        return;
+    }
 }
