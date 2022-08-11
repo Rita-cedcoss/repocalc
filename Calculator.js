@@ -1,18 +1,10 @@
 let screenInput=document.getElementById("screen");
 var screenvalue=screenInput.value;
 
-function numbers(args)
-{
-    // alert();
-    num=args.id;
-    document.getElementById("screen").value+=num;
-    flagOp=0;
-
-}
 function screenClear()
 {
-    
-   document.getElementById("screen").value="";
+    location.reload();
+//    document.getElementById("screen").value="";
 
 }
 function calculate()
@@ -29,7 +21,14 @@ function calculate()
     }
 
 }
+function numbers(args)
+{
+    // alert();
+    num=args.id;
+    document.getElementById("screen").value+=num;
+    flagOp=0;
 
+}
 let flagDec=0;
 let flagOp=0;
 function operators(op)
